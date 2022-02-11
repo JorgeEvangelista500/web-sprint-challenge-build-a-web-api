@@ -176,7 +176,7 @@ describe('server.js', () => {
         expect(res.status).toBe(404)
       }, 750)
     })
-    describe.only('[POST] /api/actions', () => {
+    describe('[POST] /api/actions', () => {
       test('[19] responds with the newly created action', async () => {
         const actionNew = { project_id: 2, description: 'm', notes: 'n', completed: false }
         const res = await request(server).post('/api/actions').send(actionNew)
