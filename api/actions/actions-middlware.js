@@ -1,7 +1,9 @@
 // add middlewares here related to actions
+const Project = require('../projects/projects-model')
 const Actions = require('./actions-model')
 
 module.exports = {
+    validateProjectAction,
     validateActionsId,
     validateActions
 }
@@ -28,3 +30,20 @@ function validateActions(req, res, next) {
         next()
     }
 }
+
+async function validateProjectAction(req, res, next) {
+    const projects = await Project.get()
+    const validActions = projects.filter(project =>
+        project.id === req.body.project_id) 
+    if(validActions.length === 0){
+        res.status(400).json({message:'action does not belong to existing projects'})
+    } else {
+        next()
+    }
+}
+
+
+
+
+
+
