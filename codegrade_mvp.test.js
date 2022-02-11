@@ -136,7 +136,7 @@ describe('server.js', () => {
         expect(res.status).toBe(404)
       }, 750)
     })
-    describe.only('[GET] /api/projects/:id/actions', () => {
+    describe('[GET] /api/projects/:id/actions', () => {
       test('[13] sends back the actions in project with given id', async () => {
         const res = await request(server).get('/api/projects/1/actions')
         expect(res.body).toMatchObject(actions)
@@ -176,7 +176,7 @@ describe('server.js', () => {
         expect(res.status).toBe(404)
       }, 750)
     })
-    describe('[POST] /api/actions', () => {
+    describe.only('[POST] /api/actions', () => {
       test('[19] responds with the newly created action', async () => {
         const actionNew = { project_id: 2, description: 'm', notes: 'n', completed: false }
         const res = await request(server).post('/api/actions').send(actionNew)
