@@ -136,7 +136,7 @@ describe('server.js', () => {
         expect(res.status).toBe(404)
       }, 750)
     })
-    describe('[GET] /api/projects/:id/actions', () => {
+    describe.only('[GET] /api/projects/:id/actions', () => {
       test('[13] sends back the actions in project with given id', async () => {
         const res = await request(server).get('/api/projects/1/actions')
         expect(res.body).toMatchObject(actions)
