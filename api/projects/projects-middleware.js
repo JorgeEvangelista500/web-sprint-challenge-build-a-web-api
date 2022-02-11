@@ -22,6 +22,8 @@ function validateProject(req, res, next) {
         res.status(400).json({message:'missing required name field'})
     } else if(!req.body.description) {
         res.status(400).json({message:'missing required description field'})
+    } else if(req.body.completed ==null) {
+        res.status(400).json({message:'missing required completed field'})
     } else {
         next()
     }
